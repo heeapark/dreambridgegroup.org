@@ -1,0 +1,49 @@
+.lk{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-bottom:2px solid currentColor;padding-bottom:3px;transition:gap .2s}
+.lk:hover{gap:14px}
+.sub a{padding:16px 0;border-bottom:3px solid transparent;white-space:nowrap}
+.sub a:hover{border-bottom-color:#2474b8;color:#123c68}
+.card{transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:0 14px 34px rgba(18,60,104,.16);transform:translateY(-3px)}
+/* ---- MOTION (hero entrance + scroll reveal) ---- */
+.hero2{position:relative;overflow:hidden}
+.hero2 .hp{position:relative}
+.hero2::before{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-200px;border-radius:50%;background:radial-gradient(circle,rgba(120,190,255,.38),transparent 68%);filter:blur(30px);animation:hdrift 16s ease-in-out infinite alternate;pointer-events:none}
+@keyframes hdrift{from{transform:translate(0,0) scale(1)}to{transform:translate(-80px,60px) scale(1.2)}}
+.hero2 .hp>*{opacity:0;transform:translateY(22px);animation:hfu .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero2 .hp>*:nth-child(1){animation-delay:.05s}
+.hero2 .hp>*:nth-child(2){animation-delay:.17s}
+.hero2 .hp>*:nth-child(3){animation-delay:.3s}
+.hero2 .hp>*:nth-child(4){animation-delay:.43s}
+.hero2 .hp>*:nth-child(5){animation-delay:.56s}
+.hero2 .hp>*:nth-child(6){animation-delay:.7s}
+@keyframes hfu{to{opacity:1;transform:none}}
+.hero2 svg path[stroke-dasharray]{animation:hdash 2.4s linear infinite}
+@keyframes hdash{to{stroke-dashoffset:-40}}
+@supports (animation-timeline:view()){
+section:not(.hero2) .hp>*,footer .hp>*{animation:rvu linear both;animation-timeline:view();animation-range:entry 0% entry 32%}
+section:not(.hero2) .hp [style*="display:grid"]>*,section:not(.hero2) .hp .card{animation:rvs linear both;animation-timeline:view();animation-range:entry 4% entry 38%}
+section:not(.hero2) .hp [style*="display:grid"]>*:nth-child(2){animation-range:entry 8% entry 42%}
+section:not(.hero2) .hp [style*="display:grid"]>*:nth-child(3){animation-range:entry 12% entry 46%}
+section:not(.hero2) .hp [style*="display:grid"]>*:nth-child(4){animation-range:entry 16% entry 50%}
+section:not(.hero2) .hp [style*="display:grid"]>*:nth-child(5){animation-range:entry 20% entry 54%}
+section:not(.hero2) .hp [style*="display:grid"]>*:nth-child(n+6){animation-range:entry 24% entry 58%}
+@keyframes rvu{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes rvs{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.hero2 .hp>*{opacity:1;transform:none}}
+[style*="letter-spacing:.14em"]::before,.hero [style*="letter-spacing:.2em"]::before,.hero2 [style*="letter-spacing:.2em"]::before{content:"";display:inline-block;width:22px;height:3px;border-radius:2px;background:#f2b705;margin-right:10px;vertical-align:middle;position:relative;top:-1px}
+/* ---- FORM FIELDS ---- */
+input,select,textarea{font:inherit;color:#1a2430;box-sizing:border-box;width:100%;margin-top:6px;padding:12px 14px;border:1px solid #b8c2cf;border-radius:2px;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid #123c68;outline-offset:1px}
+input[type=checkbox]{width:18px;height:18px;margin:2px 0 0;padding:0;flex:none}
+/* ---- PHOTO SLOTS ---- */
+.photo{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;overflow:hidden;color:#2474b8;background:linear-gradient(135deg,#e6f0fa 0%,#cfe2f5 100%);border:1px dashed rgba(36,116,184,.4);box-sizing:border-box}
+.photo::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 2px,transparent 2px 16px);opacity:.7}
+.photo::after{content:"";position:absolute;right:-40px;bottom:-50px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,210,74,.55),rgba(255,210,74,0) 70%)}
+.photo>*{position:relative;z-index:1}
+.photo svg{width:34px;height:34px;opacity:.85}
+.photo b{font-size:11px;letter-spacing:.18em;font-weight:800;color:#123c68}
+.photo span{font-size:12px;color:#5b6776}
+.photo.dk{background:linear-gradient(135deg,#1c4d82,#245f9c);border-color:rgba(255,255,255,.35);color:#bfe0fa}
+.photo.dk b{color:#fff}
+.photo.dk span{color:#bfe0fa}
