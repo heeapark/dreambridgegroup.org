@@ -28,7 +28,9 @@
     document.body.setAttribute('data-lang',lang);
   }
   document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('[data-lang]'); if(a){e.preventDefault();apply(a.dataset.lang);return;}
+    var cd=e.target.closest&&e.target.closest('[data-href]');
+    if(cd&&!e.target.closest('a')){var h=cd.getAttribute('data-href'),lg=document.documentElement.lang,pp=h.split('#');location.href=pp[0]+(lg&&lg!=='en'?'?lang='+lg:'')+(pp[1]?'#'+pp[1]:'');return;}
+    var a=e.target.closest&&e.target.closest('a[data-lang]'); if(a){e.preventDefault();apply(a.dataset.lang);return;}
     var l=e.target.closest&&e.target.closest('.mmp a'); if(l){var d=l.closest('details'); if(d) d.open=false;}
   });
   /* contact forms: opens the visitor's email app. Replace with your own endpoint when a backend exists. */

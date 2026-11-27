@@ -100,3 +100,4 @@ body[data-lang="ru"] .mn,body[data-lang="kk"] .mn{gap:16px;font-size:13px}
   [style*="display:grid"]>*{min-width:0}
 }
 html,body{overflow-x:clip}
+[data-href]{cursor:pointer}
